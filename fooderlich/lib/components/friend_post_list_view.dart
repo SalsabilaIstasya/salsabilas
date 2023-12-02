@@ -3,10 +3,8 @@ import '../models/models.dart';
 import '../components/components.dart';
 
 class FriendPostListView extends StatelessWidget {
-  final List<Post> friendPosts;
-
+  final List<Post>? friendPosts;
   const FriendPostListView({Key? key, this.friendPosts}) : super(key: key);
- 
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,9 +18,9 @@ class FriendPostListView extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              itemCount: friendPosts.length,
+              itemCount: friendPosts!.length,
               itemBuilder: (context, index) {
-                final post = friendPosts[index];
+                final post = friendPosts![index];
                 return FriendPostTile(post: post);
               },
               separatorBuilder: (context, index) {
@@ -30,5 +28,5 @@ class FriendPostListView extends StatelessWidget {
               }),
           const SizedBox(height: 16),
         ]));
- }
+  }
 }

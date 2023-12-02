@@ -5,10 +5,10 @@ class Post {
   String? timestamp;
 
   Post(
-      this.profileImageUrl,
+      {this.profileImageUrl,
       this.comment,
       this.foodPictureUrl,
-      this.timestamp);
+      this.timestamp});
 
   Post.fromJson(Map<String, dynamic> json) {
     profileImageUrl = json['profileImageUrl'];

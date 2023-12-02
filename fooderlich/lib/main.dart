@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
 import 'fooderlich_theme.dart';
 import 'home.dart';
+import 'package:provider/provider.dart';
+import 'models/models.dart';
 
 void main() {
-  runApp(const fooderlich());
+  runApp(const MyApp());
 }
 
-class fooderlich extends StatelessWidget {
-  const fooderlich({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final theme = FooderlichTheme.dark();
+    final theme = FooderlichTheme.light();
 
     return MaterialApp(
-      title: 'fooderlich',
+      title: 'Fooderlich Extend',
       theme: theme,
-      home: const Home(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => TabManager(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => GroceryManager(),
+          ),
+        ],
+        child: const Home(),
+      ),
     );
   }
 }

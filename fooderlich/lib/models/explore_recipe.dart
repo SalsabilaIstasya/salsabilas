@@ -64,13 +64,13 @@ class ExploreRecipe {
     if (json['ingredients'] != null) {
       ingredients = <Ingredients>[];
       json['ingredients'].forEach((v) {
-        ingredients?.add(Ingredients.fromJson(v));
+        ingredients!.add(Ingredients.fromJson(v));
       });
     }
     if (json['instructions'] != null) {
       instructions = <Instruction>[];
       json['instructions'].forEach((v) {
-        instructions?.add(Instruction.fromJson(v));
+        instructions!.add(Instruction.fromJson(v));
       });
     }
   }
